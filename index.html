@@ -20,8 +20,16 @@
                 name: 'rayu',
                 age: 30
             }
-            handleClick(e){
-                console.log(e);
+            // Use arrow functions inside class 
+            // components when you want to access
+            // this.state
+            handleClick = (e) => {
+                // Do not modify state directly
+                // use setState method
+                this.setState({
+                    name: 'doggo'
+                })
+                console.log(this.state);
             }
             handleMouseOver(e){
                 console.log(e.target, e.pageX);
@@ -29,15 +37,37 @@
             handleCopy(e){
                 console.log(e, 'this logs in the console')
             }
+            handleDrag(e){
+                console.log(e, e.pageX, e.pageY)
+            }
+            handleScroll(e){
+                console.log(e)
+            }
+            handleChange = (e) => {
+                this.setState({
+                    name: e.target.value
+                })
+            }
+            handleSubmit = (e) => {
+                e.preventDefault();
+                console.log('form submitted', this.state.name)
+            }
             render() {
                 return (
                     <div className="content">
                         <h1>Hi</h1>
                         <p>{ Math.random() * 10 }</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, saepe reiciendis, corrupti quo assumenda maxime quisquam vitae velit impedit natus harum debitis atque excepturi perferendis expedita ratione enim fugit explicabo. Optio possimus ullam ratione velit laudantium quas. Libero porro sit autem odio dolorem molestiae similique tenetur aliquid eum a. Est a autem quisquam earum quae natus laudantium illum vitae veniam quam necessitatibus voluptatibus amet eius temporibus, corporis accusantium dolorum sunt perspiciatis adipisci deserunt! Quas a blanditiis fugiat hic. Quibusdam facilis in nam sit inventore, repellat facere illum quia architecto expedita dolorum a, impedit tempora autem non aperiam id dicta, quos error! Hic neque optio tempore eum. Corrupti, impedit sapiente! Nemo ab soluta illo, rerum eveniet quibusdam facilis velit similique reprehenderit dolor accusantium deserunt saepe. Doloribus excepturi quam quas cumque aliquam sint praesentium commodi qui magnam itaque? Et magnam magni odio accusamus sequi iste, laudantium similique maiores animi temporibus! Consequatur quibusdam, velit cupiditate nesciunt consectetur rerum aut. Ab dignissimos animi ducimus, enim obcaecati, iure libero corrupti unde deserunt at odit, consequuntur reprehenderit illo iusto repudiandae a doloremque. Voluptatibus exercitationem ipsum dolores quas voluptates magnam iure numquam unde asperiores beatae fugit fugiat dicta suscipit accusamus quibusdam distinctio, assumenda voluptate perspiciatis odio nostrum et harum tempore nam ullam. Exercitationem cupiditate aliquam delectus atque cumque nisi vitae dolore, tempore, accusamus ad eligendi! Quisquam in ad, natus dolores, veniam consequatur totam doloremque earum autem quibusdam hic esse, assumenda tempore blanditiis dolorem. Molestiae ipsa adipisci rerum sequi dignissimos, mollitia voluptate dolorem harum necessitatibus laboriosam neque? Velit amet voluptas ab aperiam praesentium maiores fuga dignissimos alias modi. Quas exercitationem iusto ullam? Autem hic accusantium nam illo nihil asperiores, esse non pariatur. Odit cum delectus sed? Dolore cumque sit doloribus velit quo dolorem voluptatum fuga a assumenda labore. Sit eligendi voluptate quaerat incidunt repudiandae quia commodi vel asperiores, dolore consequatur laudantium, omnis adipisci perspiciatis officia dolorum tempore nesciunt saepe praesentium temporibus nobis? Sapiente, amet dignissimos reprehenderit aliquam nam repellendus rem labore, molestiae ducimus aspernatur perferendis quod. Soluta fugiat animi quod commodi, nesciunt, placeat, voluptatibus aperiam dolorum repudiandae sequi distinctio! Minima id assumenda molestiae repellat eveniet ex magnam at, aliquam animi hic iusto, quisquam exercitationem voluptate sit similique! Facilis suscipit quia optio ipsa. Ad totam laborum quasi vitae porro sit distinctio laudantium, deleniti, necessitatibus excepturi labore ullam eveniet voluptate iure hic soluta, nam ea. Expedita aspernatur soluta neque aliquam, voluptatum enim voluptates velit. Pariatur officia et quia molestias nostrum? Dolorem quis libero natus exercitationem expedita voluptates cum, incidunt, perferendis saepe dignissimos praesentium esse nisi ea vero dolorum! Earum, atque eum quae esse adipisci quia beatae sed laudantium officiis reiciendis repudiandae eos eveniet, numquam accusamus, nobis qui fugit. Distinctio obcaecati libero cum! Officiis deleniti quisquam quos ducimus! Sunt natus saepe eligendi dolore? Doloribus quam enim, laboriosam sit laborum officia unde! Dolorum alias veritatis mollitia quos soluta laboriosam adipisci harum accusantium exercitationem similique corporis, esse quibusdam consequatur, eligendi, tempore aliquam asperiores cum perferendis labore voluptates vel qui suscipit. Odit corporis quo quidem possimus? Maxime inventore aperiam, ipsam cum saepe ab sequi!</p>
                         <p>Name: {this.state.name}</p>
                         <button onClick={this.handleClick}>Click it!</button>
                         <button onMouseOver={this.handleMouseOver}>Hover Here</button>
                         <p onCopy={this.handleCopy}>onCopy event</p>
+                        <p onDrag={this.handleDrag}>drag this content</p>
+                        <h1>Updating dynamically!: {this.state.name}</h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type='text' onChange={this.handleChange}/>
+                            <button>Submit</button>
+                        </form>
                     </div>
                 )
             }

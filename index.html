@@ -16,11 +16,28 @@
 
     <script type="text/babel">
         class App extends React.Component {
+            state = {
+                name: 'rayu',
+                age: 30
+            }
+            handleClick(e){
+                console.log(e);
+            }
+            handleMouseOver(e){
+                console.log(e.target, e.pageX);
+            }
+            handleCopy(e){
+                console.log(e, 'this logs in the console')
+            }
             render() {
                 return (
                     <div className="content">
                         <h1>Hi</h1>
                         <p>{ Math.random() * 10 }</p>
+                        <p>Name: {this.state.name}</p>
+                        <button onClick={this.handleClick}>Click it!</button>
+                        <button onMouseOver={this.handleMouseOver}>Hover Here</button>
+                        <p onCopy={this.handleCopy}>onCopy event</p>
                     </div>
                 )
             }
